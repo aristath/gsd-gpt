@@ -102,6 +102,100 @@ Installs to `./.claude/` for testing modifications before contributing.
 
 </details>
 
+## Codex / GPT Usage
+
+This repo now includes a Codex-native skill pack that mirrors the core GSD workflow.
+
+### Install Codex skills
+
+Global install (default Codex home: `~/.codex`):
+
+```bash
+node bin/install-codex.js --global
+```
+
+Local install (project-only, writes to `./.codex/skills`):
+
+```bash
+node bin/install-codex.js --local
+```
+
+Optional custom Codex home for global install:
+
+```bash
+node bin/install-codex.js --global --codex-dir ~/.codex-work
+```
+
+### Installed skill names
+
+- `gsd-add-phase`
+- `gsd-add-todo`
+- `gsd-check-todos`
+- `gsd-consider-issues`
+- `gsd-discuss-milestone`
+- `gsd-discuss-phase`
+- `gsd-help`
+- `gsd-insert-phase`
+- `gsd-list-phase-assumptions`
+- `gsd-new-milestone`
+- `gsd-new-project`
+- `gsd-map-codebase`
+- `gsd-create-roadmap`
+- `gsd-plan-phase`
+- `gsd-plan-fix`
+- `gsd-remove-phase`
+- `gsd-research-phase`
+- `gsd-execute-plan`
+- `gsd-progress`
+- `gsd-resume-task`
+- `gsd-resume-work`
+- `gsd-verify-work`
+- `gsd-pause-work`
+- `gsd-complete-milestone`
+
+### How to run in Codex
+
+Invoke by naming the skill in your prompt, for example:
+
+- "Use `gsd-new-project` for this repo."
+- "Use `gsd-plan-phase` for phase 2."
+- "Use `gsd-execute-plan` for `.planning/phases/01-foundation/01-01-PLAN.md`."
+
+### Compatibility notes
+
+- Claude slash commands (`/gsd:*`) remain unchanged and continue to work in Claude Code.
+- Codex uses installed skills under `~/.codex/skills` (or `./.codex/skills` for local installs).
+- Both flows use the same `.planning` artifact model so projects can stay aligned.
+
+### Command mapping (Claude -> Codex)
+
+| Claude command | Codex skill |
+|---|---|
+| `/gsd:help` | `gsd-help` |
+| `/gsd:new-project` | `gsd-new-project` |
+| `/gsd:map-codebase` | `gsd-map-codebase` |
+| `/gsd:create-roadmap` | `gsd-create-roadmap` |
+| `/gsd:plan-phase` | `gsd-plan-phase` |
+| `/gsd:execute-plan` | `gsd-execute-plan` |
+| `/gsd:progress` | `gsd-progress` |
+| `/gsd:resume-work` | `gsd-resume-work` |
+| `/gsd:resume-task` | `gsd-resume-task` |
+| `/gsd:pause-work` | `gsd-pause-work` |
+| `/gsd:research-phase` | `gsd-research-phase` |
+| `/gsd:discuss-phase` | `gsd-discuss-phase` |
+| `/gsd:list-phase-assumptions` | `gsd-list-phase-assumptions` |
+| `/gsd:plan-fix` | `gsd-plan-fix` |
+| `/gsd:verify-work` | `gsd-verify-work` |
+| `/gsd:consider-issues` | `gsd-consider-issues` |
+| `/gsd:add-todo` | `gsd-add-todo` |
+| `/gsd:check-todos` | `gsd-check-todos` |
+| `/gsd:add-phase` | `gsd-add-phase` |
+| `/gsd:insert-phase` | `gsd-insert-phase` |
+| `/gsd:remove-phase` | `gsd-remove-phase` |
+| `/gsd:discuss-milestone` | `gsd-discuss-milestone` |
+| `/gsd:new-milestone` | `gsd-new-milestone` |
+| `/gsd:complete-milestone` | `gsd-complete-milestone` |
+
 ### Recommended: Skip Permissions Mode
 
 GSD is designed for frictionless automation. Run Claude Code with:
