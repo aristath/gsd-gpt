@@ -3,27 +3,18 @@ name: gsd-plan-phase
 description: Plan one roadmap phase into small, executable tasks.
 ---
 
-# gsd-plan-phase
+# gsd-plan-phase (Strict Parity)
 
-## Objective
-Turn one phase from `ROADMAP.md` into an executable plan markdown file.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Inputs
+## Installed runtime locations
 
-- Phase number (required from user prompt)
+- Local: `./.codex/get-shit-done/commands/plan-phase.md`
+- Global: `~/.codex/get-shit-done/commands/plan-phase.md`
 
-## Process
+Prefer local if present for the repo you are working in.
 
-1. Validate `.planning/ROADMAP.md` and `.planning/STATE.md` exist.
-2. Read target phase context from roadmap/state/project docs.
-3. Create plan file in phase folder using pattern:
-`.planning/phases/NN-phase-name/NN-YY-PLAN.md`
-4. Keep scope small:
-- 2-3 tasks
-- each task has concrete files
-- each task has verification steps
-5. Include checkpoints for risky steps.
+## Runbook
 
-## Output Contract
-
-A single new `PLAN.md` exists and is ready for `gsd-execute-plan`.
+1. Open and follow: `~/.codex/get-shit-done/commands/plan-phase.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

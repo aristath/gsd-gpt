@@ -3,21 +3,18 @@ name: gsd-pause-work
 description: Capture an actionable handoff when pausing mid-work.
 ---
 
-# gsd-pause-work
+# gsd-pause-work (Strict Parity)
 
-## Objective
-Create a restart handoff so the next session can resume quickly.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Process
+## Installed runtime locations
 
-1. Summarize in-progress changes and pending tasks.
-2. Create or update `.planning/.continue-here.md` with:
-- current plan/task
-- exact next step
-- pending verification
-- known risks
-3. Update `.planning/STATE.md` session continuity notes.
+- Local: `./.codex/get-shit-done/commands/pause-work.md`
+- Global: `~/.codex/get-shit-done/commands/pause-work.md`
 
-## Output Contract
+Prefer local if present for the repo you are working in.
 
-Handoff docs are written and state is resume-ready.
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/pause-work.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

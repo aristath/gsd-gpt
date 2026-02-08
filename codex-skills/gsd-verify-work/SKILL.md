@@ -3,14 +3,18 @@ name: gsd-verify-work
 description: Verify completed work against plan acceptance criteria.
 ---
 
-# gsd-verify-work
+# gsd-verify-work (Strict Parity)
 
-Input: plan path or phase reference.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read relevant `PLAN.md` and `SUMMARY.md`.
-2. Run the documented verification commands.
-3. Check acceptance criteria line-by-line.
-4. Report pass/fail evidence and gaps.
-5. Update state artifacts if verification changes status.
+## Installed runtime locations
 
-Output: evidence-based verification report.
+- Local: `./.codex/get-shit-done/commands/verify-work.md`
+- Global: `~/.codex/get-shit-done/commands/verify-work.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/verify-work.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

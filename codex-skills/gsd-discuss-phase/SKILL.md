@@ -3,12 +3,18 @@ name: gsd-discuss-phase
 description: Clarify phase intent before generating execution plan.
 ---
 
-# gsd-discuss-phase
+# gsd-discuss-phase (Strict Parity)
 
-Input: phase number.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read target phase from `.planning/ROADMAP.md`.
-2. Ask targeted questions about UX, scope boundaries, and acceptance criteria.
-3. Save phase context to `.planning/phases/NN-phase-name/CONTEXT.md`.
+## Installed runtime locations
 
-Output: phase context document that sharpens `gsd-plan-phase` quality.
+- Local: `./.codex/get-shit-done/commands/discuss-phase.md`
+- Global: `~/.codex/get-shit-done/commands/discuss-phase.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/discuss-phase.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

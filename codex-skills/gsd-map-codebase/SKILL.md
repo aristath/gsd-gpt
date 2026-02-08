@@ -3,30 +3,18 @@ name: gsd-map-codebase
 description: Analyze an existing codebase and generate a focused planning map.
 ---
 
-# gsd-map-codebase
+# gsd-map-codebase (Strict Parity)
 
-## Objective
-Generate `.planning/codebase/` knowledge docs for brownfield planning.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Required Outputs
+## Installed runtime locations
 
-Create these files:
+- Local: `./.codex/get-shit-done/commands/map-codebase.md`
+- Global: `~/.codex/get-shit-done/commands/map-codebase.md`
 
-- `.planning/codebase/STACK.md`
-- `.planning/codebase/ARCHITECTURE.md`
-- `.planning/codebase/STRUCTURE.md`
-- `.planning/codebase/CONVENTIONS.md`
-- `.planning/codebase/TESTING.md`
-- `.planning/codebase/INTEGRATIONS.md`
-- `.planning/codebase/CONCERNS.md`
+Prefer local if present for the repo you are working in.
 
-## Process
+## Runbook
 
-1. Inspect repository structure and key configs.
-2. Use parallel exploration where safe.
-3. Keep docs concise and actionable for future planning.
-4. Capture known risks and assumptions explicitly.
-
-## Output Contract
-
-All seven files exist and can be used by `gsd-new-project` and `gsd-plan-phase`.
+1. Open and follow: `~/.codex/get-shit-done/commands/map-codebase.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

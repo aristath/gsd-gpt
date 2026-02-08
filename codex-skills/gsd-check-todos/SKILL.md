@@ -3,10 +3,18 @@ name: gsd-check-todos
 description: Review planning TODOs and suggest next actions.
 ---
 
-# gsd-check-todos
+# gsd-check-todos (Strict Parity)
 
-1. Read `.planning/ISSUES.md` if present.
-2. Summarize open, blocked, and recently completed TODOs.
-3. Recommend one next TODO to execute now.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-Output: concise TODO status report and next step recommendation.
+## Installed runtime locations
+
+- Local: `./.codex/get-shit-done/commands/check-todos.md`
+- Global: `~/.codex/get-shit-done/commands/check-todos.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/check-todos.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

@@ -3,13 +3,18 @@ name: gsd-list-phase-assumptions
 description: Show intended implementation assumptions before planning/execution.
 ---
 
-# gsd-list-phase-assumptions
+# gsd-list-phase-assumptions (Strict Parity)
 
-Input: phase number.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read `.planning/PROJECT.md`, `.planning/ROADMAP.md`, `.planning/STATE.md`.
-2. List assumptions about architecture, dependencies, risks, and tests.
-3. Mark each assumption as high/medium/low confidence.
-4. Ask user to correct assumptions before proceeding.
+## Installed runtime locations
 
-Output: explicit assumption list with confidence and correction points.
+- Local: `./.codex/get-shit-done/commands/list-phase-assumptions.md`
+- Global: `~/.codex/get-shit-done/commands/list-phase-assumptions.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/list-phase-assumptions.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

@@ -3,24 +3,18 @@ name: gsd-complete-milestone
 description: Archive completed milestone context and prep next milestone.
 ---
 
-# gsd-complete-milestone
+# gsd-complete-milestone (Strict Parity)
 
-## Objective
-Close one milestone and prepare the next iteration.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Inputs
+## Installed runtime locations
 
-- Version label (required, e.g. `1.0.0`)
+- Local: `./.codex/get-shit-done/commands/complete-milestone.md`
+- Global: `~/.codex/get-shit-done/commands/complete-milestone.md`
 
-## Process
+Prefer local if present for the repo you are working in.
 
-1. Validate all milestone phases are complete or explicitly deferred.
-2. Create milestone archive under `.planning/milestones/`.
-3. Append milestone summary to `.planning/MILESTONES.md`.
-4. Update `.planning/STATE.md` to next milestone baseline.
-5. If git policy allows, propose tag creation command:
-`git tag v<version>`
+## Runbook
 
-## Output Contract
-
-Milestone is archived with clear transition context for next cycle.
+1. Open and follow: `~/.codex/get-shit-done/commands/complete-milestone.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

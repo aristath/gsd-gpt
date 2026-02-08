@@ -3,21 +3,18 @@ name: gsd-resume-work
 description: Restore context from planning artifacts and continue work.
 ---
 
-# gsd-resume-work
+# gsd-resume-work (Strict Parity)
 
-## Objective
-Rebuild session context from `.planning` artifacts.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Process
+## Installed runtime locations
 
-1. Read `.planning/STATE.md` and latest phase summary.
-2. Summarize:
-- where work stopped
-- what is complete
-- what remains
-3. Recommend immediate next action.
-4. If `.continue-here.md` exists, prioritize its guidance.
+- Local: `./.codex/get-shit-done/commands/resume-work.md`
+- Global: `~/.codex/get-shit-done/commands/resume-work.md`
 
-## Output Contract
+Prefer local if present for the repo you are working in.
 
-User receives a concrete restart point and next command.
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/resume-work.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

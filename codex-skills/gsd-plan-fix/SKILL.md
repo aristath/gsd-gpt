@@ -3,14 +3,18 @@ name: gsd-plan-fix
 description: Create a focused fix plan for a bug or regression.
 ---
 
-# gsd-plan-fix
+# gsd-plan-fix (Strict Parity)
 
-Input: issue description.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Capture bug scope, impact, and reproduction.
-2. Create a small fix plan file under current phase folder:
-`NN-YY-FIX-PLAN.md`.
-3. Include TDD steps: failing test, minimal fix, verification, regression checks.
-4. Add rollback/risk notes if behavior-sensitive.
+## Installed runtime locations
 
-Output: executable fix plan ready for `gsd-execute-plan`.
+- Local: `./.codex/get-shit-done/commands/plan-fix.md`
+- Global: `~/.codex/get-shit-done/commands/plan-fix.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/plan-fix.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

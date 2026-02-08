@@ -3,13 +3,18 @@ name: gsd-insert-phase
 description: Insert an intermediate roadmap phase between existing phases.
 ---
 
-# gsd-insert-phase
+# gsd-insert-phase (Strict Parity)
 
-Input: position and description.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read `.planning/ROADMAP.md`.
-2. Insert a decimal phase number between existing phases (e.g. 3.1).
-3. Create matching folder under `.planning/phases/`.
-4. Update phase ordering references in `.planning/STATE.md`.
+## Installed runtime locations
 
-Output: new midstream phase inserted without breaking roadmap continuity.
+- Local: `./.codex/get-shit-done/commands/insert-phase.md`
+- Global: `~/.codex/get-shit-done/commands/insert-phase.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/insert-phase.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

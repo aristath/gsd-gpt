@@ -3,13 +3,18 @@ name: gsd-research-phase
 description: Produce domain research context for a specialized phase.
 ---
 
-# gsd-research-phase
+# gsd-research-phase (Strict Parity)
 
-Input: phase number and topic.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Identify unknowns and critical decisions for the phase.
-2. Research patterns, pitfalls, and standard approaches.
-3. Save findings to `.planning/phases/NN-phase-name/RESEARCH.md`.
-4. Add decision-ready recommendations for planning.
+## Installed runtime locations
 
-Output: research doc usable by `gsd-plan-phase`.
+- Local: `./.codex/get-shit-done/commands/research-phase.md`
+- Global: `~/.codex/get-shit-done/commands/research-phase.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/research-phase.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

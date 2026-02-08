@@ -3,25 +3,18 @@ name: gsd-create-roadmap
 description: Create roadmap and state files from project requirements.
 ---
 
-# gsd-create-roadmap
+# gsd-create-roadmap (Strict Parity)
 
-## Objective
-Create a phase-based roadmap and state tracker under `.planning/`.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Process
+## Installed runtime locations
 
-1. Read `.planning/PROJECT.md`.
-2. Create `.planning/ROADMAP.md` with milestone and numbered phases.
-3. Create `.planning/STATE.md` with:
-- current milestone
-- current phase
-- completed plans
-- decisions
-- open issues
-4. Create `.planning/phases/` and one folder per phase using format:
-`NN-phase-name`
+- Local: `./.codex/get-shit-done/commands/create-roadmap.md`
+- Global: `~/.codex/get-shit-done/commands/create-roadmap.md`
 
-## Output Contract
+Prefer local if present for the repo you are working in.
 
-- `ROADMAP.md` and `STATE.md` are consistent.
-- At least one phase is ready for `gsd-plan-phase`.
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/create-roadmap.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

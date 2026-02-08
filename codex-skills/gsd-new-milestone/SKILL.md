@@ -3,13 +3,18 @@ name: gsd-new-milestone
 description: Create a fresh milestone and initialize its roadmap phases.
 ---
 
-# gsd-new-milestone
+# gsd-new-milestone (Strict Parity)
 
-Input: milestone name.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read `.planning/ROADMAP.md` and `.planning/STATE.md`.
-2. Add a new milestone section with initial phases.
-3. Create needed `.planning/phases/` directories.
-4. Update `.planning/STATE.md` current milestone pointer.
+## Installed runtime locations
 
-Output: new milestone is initialized and ready for planning.
+- Local: `./.codex/get-shit-done/commands/new-milestone.md`
+- Global: `~/.codex/get-shit-done/commands/new-milestone.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/new-milestone.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

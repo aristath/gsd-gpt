@@ -3,12 +3,18 @@ name: gsd-add-todo
 description: Add a tracked TODO item tied to current phase execution.
 ---
 
-# gsd-add-todo
+# gsd-add-todo (Strict Parity)
 
-Input: todo description and optional priority.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Ensure `.planning/ISSUES.md` (or create it).
-2. Append a TODO entry with date, phase context, and status `open`.
-3. Reference related plan file if provided.
+## Installed runtime locations
 
-Output: a new actionable TODO exists in planning artifacts.
+- Local: `./.codex/get-shit-done/commands/add-todo.md`
+- Global: `~/.codex/get-shit-done/commands/add-todo.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/add-todo.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

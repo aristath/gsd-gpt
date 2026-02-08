@@ -3,11 +3,18 @@ name: gsd-consider-issues
 description: Review deferred issues against current project state.
 ---
 
-# gsd-consider-issues
+# gsd-consider-issues (Strict Parity)
 
-1. Read `.planning/ISSUES.md`, `.planning/STATE.md`, `.planning/ROADMAP.md`.
-2. Re-evaluate each open issue against latest code/project context.
-3. Classify each as: do now, schedule later, or close.
-4. Update issue statuses and rationale.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-Output: triaged issues with explicit decisions.
+## Installed runtime locations
+
+- Local: `./.codex/get-shit-done/commands/consider-issues.md`
+- Global: `~/.codex/get-shit-done/commands/consider-issues.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/consider-issues.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

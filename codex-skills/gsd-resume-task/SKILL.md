@@ -3,13 +3,18 @@ name: gsd-resume-task
 description: Resume a specific interrupted task with exact next action.
 ---
 
-# gsd-resume-task
+# gsd-resume-task (Strict Parity)
 
-Input: task reference or plan path.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read latest summary, `.planning/STATE.md`, and `.planning/.continue-here.md`.
-2. Locate exact incomplete task and verification status.
-3. Provide immediate next command/action.
-4. Update continuity notes if task target changes.
+## Installed runtime locations
 
-Output: user gets a concrete task restart point.
+- Local: `./.codex/get-shit-done/commands/resume-task.md`
+- Global: `~/.codex/get-shit-done/commands/resume-task.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/resume-task.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

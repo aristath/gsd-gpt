@@ -3,11 +3,18 @@ name: gsd-discuss-milestone
 description: Shape goals for the next milestone before roadmap changes.
 ---
 
-# gsd-discuss-milestone
+# gsd-discuss-milestone (Strict Parity)
 
-1. Read `.planning/STATE.md`, `.planning/ROADMAP.md`, recent summaries.
-2. Ask focused questions to define milestone outcomes.
-3. Produce a milestone brief with goals, constraints, and non-goals.
-4. Save brief to `.planning/MILESTONE-CONTEXT.md`.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-Output: a validated milestone brief ready for `gsd-new-milestone`.
+## Installed runtime locations
+
+- Local: `./.codex/get-shit-done/commands/discuss-milestone.md`
+- Global: `~/.codex/get-shit-done/commands/discuss-milestone.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/discuss-milestone.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

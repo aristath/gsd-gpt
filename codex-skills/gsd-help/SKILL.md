@@ -3,44 +3,45 @@ name: gsd-help
 description: Show the Codex GSD command reference and usage flow.
 ---
 
-# GSD for Codex: Command Reference
+# gsd-help (Strict Parity)
 
-Use these skill names in prompts to run each workflow:
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. `gsd-help`
-2. `gsd-new-project`
-3. `gsd-map-codebase`
-4. `gsd-create-roadmap`
-5. `gsd-plan-phase`
-6. `gsd-execute-plan`
-7. `gsd-progress`
-8. `gsd-resume-work`
-9. `gsd-resume-task`
-10. `gsd-pause-work`
-11. `gsd-research-phase`
-12. `gsd-discuss-phase`
-13. `gsd-list-phase-assumptions`
-14. `gsd-plan-fix`
-15. `gsd-verify-work`
-16. `gsd-consider-issues`
-17. `gsd-add-todo`
-18. `gsd-check-todos`
-19. `gsd-add-phase`
-20. `gsd-insert-phase`
-21. `gsd-remove-phase`
-22. `gsd-discuss-milestone`
-23. `gsd-new-milestone`
-24. `gsd-complete-milestone`
+## Installed runtime locations
 
-## Quick Start
+- Local: `./.codex/get-shit-done/commands/help.md`
+- Global: `~/.codex/get-shit-done/commands/help.md`
 
-1. Use `gsd-new-project` to initialize `.planning/PROJECT.md` and `.planning/config.json`.
-2. Use `gsd-create-roadmap` to create `.planning/ROADMAP.md`, `.planning/STATE.md`, and phase directories.
-3. Use `gsd-plan-phase` to produce a concrete phase plan markdown file.
-4. Use `gsd-execute-plan` to implement the plan with tests and verification.
+Prefer local if present for the repo you are working in.
 
-## Notes
+## Skill list
 
-- Keep `.planning` as the source of truth.
-- Favor small plans (2-3 tasks) and verifiable checkpoints.
-- Use `gsd-progress` before starting a new session.
+- `gsd-add-phase`
+- `gsd-add-todo`
+- `gsd-check-todos`
+- `gsd-complete-milestone`
+- `gsd-consider-issues`
+- `gsd-create-roadmap`
+- `gsd-discuss-milestone`
+- `gsd-discuss-phase`
+- `gsd-execute-plan`
+- `gsd-help`
+- `gsd-insert-phase`
+- `gsd-list-phase-assumptions`
+- `gsd-map-codebase`
+- `gsd-new-milestone`
+- `gsd-new-project`
+- `gsd-pause-work`
+- `gsd-plan-fix`
+- `gsd-plan-phase`
+- `gsd-progress`
+- `gsd-remove-phase`
+- `gsd-research-phase`
+- `gsd-resume-task`
+- `gsd-resume-work`
+- `gsd-verify-work`
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/help.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:plan-phase`, use the Codex skill name instead (`gsd-plan-phase`).

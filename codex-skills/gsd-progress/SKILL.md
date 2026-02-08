@@ -3,24 +3,18 @@ name: gsd-progress
 description: Report current GSD state and suggest next action.
 ---
 
-# gsd-progress
+# gsd-progress (Strict Parity)
 
-## Objective
-Summarize progress and route to the next high-value command.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-## Process
+## Installed runtime locations
 
-1. Read `.planning/STATE.md` and `.planning/ROADMAP.md`.
-2. Report:
-- milestone progress
-- current phase and latest plan
-- recently completed work from summaries
-- open blockers/issues
-3. Provide next recommended command from:
-- `gsd-plan-phase`
-- `gsd-execute-plan`
-- `gsd-complete-milestone`
+- Local: `./.codex/get-shit-done/commands/progress.md`
+- Global: `~/.codex/get-shit-done/commands/progress.md`
 
-## Output Contract
+Prefer local if present for the repo you are working in.
 
-A concise status report with one recommended next step.
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/progress.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).

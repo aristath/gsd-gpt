@@ -3,13 +3,18 @@ name: gsd-add-phase
 description: Add a new phase to the end of the active milestone roadmap.
 ---
 
-# gsd-add-phase
+# gsd-add-phase (Strict Parity)
 
-Input: phase description from user.
+This Codex skill delegates to the shared GSD runtime command doc.
 
-1. Read `.planning/ROADMAP.md`.
-2. Append a new phase with next sequential number.
-3. Create phase folder under `.planning/phases/NN-phase-name`.
-4. Update `.planning/STATE.md` if current milestone metadata changes.
+## Installed runtime locations
 
-Output: roadmap and phase folder updated consistently.
+- Local: `./.codex/get-shit-done/commands/add-phase.md`
+- Global: `~/.codex/get-shit-done/commands/add-phase.md`
+
+Prefer local if present for the repo you are working in.
+
+## Runbook
+
+1. Open and follow: `~/.codex/get-shit-done/commands/add-phase.md` (or the local path).
+2. When the runbook references a Claude slash command like `/gsd:...`, use the Codex skill name instead (`gsd-...`).
