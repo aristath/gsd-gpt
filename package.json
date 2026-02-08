@@ -10,7 +10,8 @@
     "bin",
     "commands",
     "get-shit-done",
-    "codex-skills"
+    "codex-skills",
+    "codex-runtime"
   ],
   "keywords": [
     "claude",

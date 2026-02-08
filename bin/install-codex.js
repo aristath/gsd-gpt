@@ -51,9 +51,14 @@ function install({ isGlobal, codexDirArg }) {
 
   const skillsDest = path.join(codexHome, 'skills');
   const skillsSrc = path.join(__dirname, '..', 'codex-skills');
+  const runtimeSrc = path.join(__dirname, '..', 'codex-runtime', 'get-shit-done');
+  const runtimeDest = path.join(codexHome, 'get-shit-done');
 
   if (!fs.existsSync(skillsSrc)) {
     throw new Error('codex-skills directory is missing from this package');
+  }
+  if (!fs.existsSync(runtimeSrc)) {
+    throw new Error('codex-runtime/get-shit-done directory is missing from this package');
   }
 
   fs.mkdirSync(skillsDest, { recursive: true });
@@ -63,9 +68,13 @@ function install({ isGlobal, codexDirArg }) {
     copyDir(path.join(skillsSrc, skillDir.name), path.join(skillsDest, skillDir.name));
   }
 
+  // Install shared runtime bundle (workflows/templates/references/commands).
+  copyDir(runtimeSrc, runtimeDest);
+
   const locationLabel = codexHome.replace(os.homedir(), '~');
   console.log(`\n${cyan}Get Shit Done for Codex${reset} ${dim}v${pkg.version}${reset}`);
   console.log(`Installed ${green}${skillDirs.length}${reset} skills to ${cyan}${locationLabel}/skills${reset}`);
+  console.log(`Installed runtime bundle to ${cyan}${locationLabel}/get-shit-done${reset}`);
   console.log(`Use skill names in prompts, e.g. ${cyan}gsd-help${reset}, ${cyan}gsd-new-project${reset}, ${cyan}gsd-plan-phase${reset}.\n`);
 }
 
