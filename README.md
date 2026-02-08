@@ -126,6 +126,17 @@ Optional custom Codex home for global install:
 node bin/install-codex.js --global --codex-dir ~/.codex-work
 ```
 
+### Strict parity mode (how this Codex port works)
+
+For Codex, GSD installs:
+
+- Skills into `~/.codex/skills/gsd-*` (or `./.codex/skills/gsd-*` for local installs)
+- A shared runtime bundle into `~/.codex/get-shit-done/` (or `./.codex/get-shit-done/`), containing:
+  - `commands/` (the detailed runbooks)
+  - `workflows/`, `templates/`, `references/`
+
+Each Codex `gsd-*` skill is intentionally a thin wrapper that delegates to the corresponding runtime runbook at:\n`<codex-home>/get-shit-done/commands/<command>.md`\n\nThis keeps behavior aligned with the original GSD command docs and makes parity maintainable.
+
 ### Installed skill names
 
 - `gsd-add-phase`

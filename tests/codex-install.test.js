@@ -96,3 +96,124 @@ test('gsd-help enumerates every installed codex skill', () => {
     assert.match(helpContent, new RegExp('`' + skill + '`'));
   }
 });
+
+test('codex skills match key artifact paths from original GSD', () => {
+  const fs = require('fs');
+  const path = require('path');
+
+  const runtimeCmdRoot = path.join(__dirname, '..', 'codex-runtime', 'get-shit-done', 'commands');
+  const readCmd = (name) => fs.readFileSync(path.join(runtimeCmdRoot, name + '.md'), 'utf8');
+
+  // Todos are directory-based in original GSD (.planning/todos/pending + done).
+  const addTodo = readCmd('add-todo');
+  assert.match(addTodo, /\.planning\/todos\/pending/);
+  assert.match(addTodo, /\.planning\/todos\/done/);
+
+  const checkTodos = readCmd('check-todos');
+  assert.match(checkTodos, /\.planning\/todos\/pending/);
+  assert.match(checkTodos, /\.planning\/todos\/done/);
+
+  // Pause/resume uses per-phase .continue-here.md in original GSD.
+  const pauseWork = readCmd('pause-work');
+  assert.match(pauseWork, /\.planning\/phases\//);
+  assert.match(pauseWork, /\.continue-here\.md/);
+
+  // resume-work delegates to resume-project workflow in original GSD; the workflow contains
+  // the concrete .continue-here detection/resumption logic.
+  const resumeProject = fs.readFileSync(
+    path.join(__dirname, '..', 'codex-runtime', 'get-shit-done', 'workflows', 'resume-project.md'),
+    'utf8'
+  );
+  assert.match(resumeProject, /\.continue-here/);
+});
+
+test('codex installer package contains a shared gsd runtime bundle', () => {
+  const fs = require('fs');
+  const path = require('path');
+
+  const repoRoot = path.join(__dirname, '..');
+  const bundleRoot = path.join(repoRoot, 'codex-runtime', 'get-shit-done');
+
+  assert.ok(fs.existsSync(bundleRoot), 'missing codex-runtime/get-shit-done');
+  assert.ok(fs.existsSync(path.join(bundleRoot, 'workflows')), 'missing workflows/');
+  assert.ok(fs.existsSync(path.join(bundleRoot, 'templates')), 'missing templates/');
+  assert.ok(fs.existsSync(path.join(bundleRoot, 'references')), 'missing references/');
+});
+
+test('codex runtime bundle includes command docs for every codex skill', () => {
+  const fs = require('fs');
+  const path = require('path');
+
+  const repoRoot = path.join(__dirname, '..');
+  const skillsRoot = path.join(repoRoot, 'codex-skills');
+  const runtimeCmdRoot = path.join(repoRoot, 'codex-runtime', 'get-shit-done', 'commands');
+
+  const skillDirs = fs.readdirSync(skillsRoot, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+
+  for (const skill of skillDirs) {
+    const cmdName = skill.replace(/^gsd-/, '');
+    const cmdPath = path.join(runtimeCmdRoot, cmdName + '.md');
+    assert.ok(fs.existsSync(cmdPath), `missing runtime command doc: ${cmdName}.md`);
+  }
+});
+
+test('each codex skill delegates to runtime command doc (strict parity)', () => {
+  const fs = require('fs');
+  const path = require('path');
+
+  const repoRoot = path.join(__dirname, '..');
+  const skillsRoot = path.join(repoRoot, 'codex-skills');
+
+  const skillDirs = fs.readdirSync(skillsRoot, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+
+  for (const skill of skillDirs) {
+    const cmdName = skill.replace(/^gsd-/, '');
+    const skillPath = path.join(skillsRoot, skill, 'SKILL.md');
+    const content = fs.readFileSync(skillPath, 'utf8');
+    assert.match(content, /get-shit-done\/commands\//);
+    assert.ok(
+      content.includes(`get-shit-done/commands/${cmdName}.md`),
+      `skill does not reference expected runtime command: ${cmdName}.md`
+    );
+  }
+});
+
+test('install-codex installs runtime bundle into target codex home', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const os = require('os');
+  const cp = require('child_process');
+
+  const repoRoot = path.join(__dirname, '..');
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'gsd-codex-test-'));
+  const codexHome = path.join(tmp, 'codex-home');
+
+  cp.execFileSync('node', ['bin/install-codex.js', '--global', '--codex-dir', codexHome], {
+    cwd: repoRoot,
+    stdio: 'ignore',
+  });
+
+  // Skills
+  assert.ok(
+    fs.existsSync(path.join(codexHome, 'skills', 'gsd-help', 'SKILL.md')),
+    'missing installed skill'
+  );
+
+  // Runtime bundle
+  assert.ok(
+    fs.existsSync(path.join(codexHome, 'get-shit-done', 'workflows', 'execute-phase.md')),
+    'missing installed runtime workflow'
+  );
+  assert.ok(
+    fs.existsSync(path.join(codexHome, 'get-shit-done', 'templates', 'project.md')),
+    'missing installed runtime template'
+  );
+  assert.ok(
+    fs.existsSync(path.join(codexHome, 'get-shit-done', 'references', 'principles.md')),
+    'missing installed runtime reference'
+  );
+});
