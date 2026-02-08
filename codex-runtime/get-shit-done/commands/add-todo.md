@@ -2,11 +2,6 @@
 name: gsd:add-todo
 description: Capture idea or task as todo from current conversation context
 argument-hint: [optional description]
-allowed-tools:
-  - Read
-  - Write
-  - Bash
-  - Glob
 ---
 
 <objective>
@@ -16,7 +11,7 @@ Enables "thought → capture → continue" flow without losing context or derail
 </objective>
 
 <context>
-@.planning/STATE.md
+.planning/STATE.md
 </context>
 
 <process>
@@ -37,7 +32,7 @@ Note existing areas for consistency in infer_area step.
 
 <step name="extract_content">
 **With arguments:** Use as the title/focus.
-- `/gsd:add-todo Add auth token refresh` → title = "Add auth token refresh"
+- `gsd-add-todo Add auth token refresh` → title = "Add auth token refresh"
 
 **Without arguments:** Analyze recent conversation to extract:
 - The specific problem, idea, or task discussed
@@ -78,7 +73,7 @@ If potential duplicate found:
 1. Read the existing todo
 2. Compare scope
 
-If overlapping, use AskUserQuestion:
+If overlapping, use ask the user:
 - header: "Duplicate?"
 - question: "Similar todo exists: [title]. What would you like to do?"
 - options:
@@ -154,7 +149,7 @@ Would you like to:
 
 1. Continue with current work
 2. Add another todo
-3. View all todos (/gsd:check-todos)
+3. View all todos (gsd-check-todos)
 ```
 </step>
 

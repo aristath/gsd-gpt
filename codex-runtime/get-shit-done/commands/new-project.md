@@ -1,11 +1,6 @@
 ---
 name: gsd:new-project
 description: Initialize a new project with deep context gathering and PROJECT.md
-allowed-tools:
-  - Read
-  - Bash
-  - Write
-  - AskUserQuestion
 ---
 
 <objective>
@@ -20,10 +15,10 @@ Creates `.planning/` with PROJECT.md and config.json.
 
 <execution_context>
 
-@~/.codex/get-shit-done/references/principles.md
-@~/.codex/get-shit-done/references/questioning.md
-@~/.codex/get-shit-done/templates/project.md
-@~/.codex/get-shit-done/templates/config.json
+~/.codex/get-shit-done/references/principles.md
+~/.codex/get-shit-done/references/questioning.md
+~/.codex/get-shit-done/templates/project.md
+~/.codex/get-shit-done/templates/config.json
 
 </execution_context>
 
@@ -35,7 +30,7 @@ Creates `.planning/` with PROJECT.md and config.json.
 
 1. **Abort if project exists:**
    ```bash
-   [ -f .planning/PROJECT.md ] && echo "ERROR: Project already initialized. Use /gsd:progress" && exit 1
+   [ -f .planning/PROJECT.md ] && echo "ERROR: Project already initialized. Use gsd-progress" && exit 1
    ```
 
 2. **Initialize git repo in THIS directory** (required even if inside a parent repo):
@@ -69,16 +64,16 @@ Check the results from setup step:
 - If `CODE_FILES` is non-empty OR `HAS_PACKAGE` is "yes"
 - AND `HAS_CODEBASE_MAP` is NOT "yes"
 
-Use AskUserQuestion:
+Use ask the user:
 - header: "Existing Code"
 - question: "I detected existing code in this directory. Would you like to map the codebase first?"
 - options:
-  - "Map codebase first" — Run /gsd:map-codebase to understand existing architecture (Recommended)
+  - "Map codebase first" — Run gsd-map-codebase to understand existing architecture (Recommended)
   - "Skip mapping" — Proceed with project initialization
 
 **If "Map codebase first":**
 ```
-Run `/gsd:map-codebase` first, then return to `/gsd:new-project`
+Run `gsd-map-codebase` first, then return to `gsd-new-project`
 ```
 Exit command.
 
@@ -90,43 +85,43 @@ Exit command.
 
 <step name="question">
 
-**1. Open (FREEFORM — do NOT use AskUserQuestion):**
+**1. Open (FREEFORM — do NOT use ask the user):**
 
 Ask inline: "What do you want to build?"
 
 Wait for their freeform response. This gives you the context needed to ask intelligent follow-up questions.
 
-**2. Follow the thread (NOW use AskUserQuestion):**
+**2. Follow the thread (NOW use ask the user):**
 
-Based on their response, use AskUserQuestion with options that probe what they mentioned:
+Based on their response, use ask the user with options that probe what they mentioned:
 - header: "[Topic they mentioned]"
 - question: "You mentioned [X] — what would that look like?"
 - options: 2-3 interpretations + "Something else"
 
 **3. Sharpen the core:**
 
-Use AskUserQuestion:
+Use ask the user:
 - header: "Core"
 - question: "If you could only nail one thing, what would it be?"
 - options: Key aspects they've mentioned + "All equally important" + "Something else"
 
 **4. Find boundaries:**
 
-Use AskUserQuestion:
+Use ask the user:
 - header: "Scope"
 - question: "What's explicitly NOT in v1?"
 - options: Things that might be tempting + "Nothing specific" + "Let me list them"
 
 **5. Ground in reality:**
 
-Use AskUserQuestion:
+Use ask the user:
 - header: "Constraints"
 - question: "Any hard constraints?"
 - options: Relevant constraint types + "None" + "Yes, let me explain"
 
 **6. Decision gate:**
 
-Use AskUserQuestion:
+Use ask the user:
 - header: "Ready?"
 - question: "Ready to create PROJECT.md, or explore more?"
 - options (ALL THREE REQUIRED):
@@ -223,7 +218,7 @@ Do not compress. Capture everything gathered.
 
 Ask workflow mode preference:
 
-Use AskUserQuestion:
+Use ask the user:
 
 - header: "Mode"
 - question: "How do you want to work?"
@@ -237,7 +232,7 @@ Use AskUserQuestion:
 
 Ask planning depth preference:
 
-Use AskUserQuestion:
+Use ask the user:
 
 - header: "Depth"
 - question: "How thorough should planning be?"
@@ -285,7 +280,7 @@ Project initialized:
 
 **[Project Name]** — create roadmap
 
-`/gsd:create-roadmap`
+`gsd-create-roadmap`
 
 <sub>`/clear` first → fresh context window</sub>
 

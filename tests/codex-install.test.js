@@ -217,3 +217,25 @@ test('install-codex installs runtime bundle into target codex home', () => {
     'missing installed runtime reference'
   );
 });
+
+test('runtime command docs are codex-native (no claude slash commands or tool directives)', () => {
+  const fs = require('fs');
+  const path = require('path');
+
+  const repoRoot = path.join(__dirname, '..');
+  const cmdRoot = path.join(repoRoot, 'codex-runtime', 'get-shit-done', 'commands');
+
+  const files = fs.readdirSync(cmdRoot).filter((f) => f.endsWith('.md')).sort();
+  assert.ok(files.length > 0, 'no runtime command docs found');
+
+  for (const f of files) {
+    const content = fs.readFileSync(path.join(cmdRoot, f), 'utf8');
+    assert.equal(content.includes('/gsd:'), false, `${f} contains /gsd:`);
+    assert.equal(content.includes('AskUserQuestion'), false, `${f} contains AskUserQuestion`);
+    assert.equal(content.includes('SlashCommand'), false, `${f} contains SlashCommand`);
+    assert.equal(content.includes('allowed-tools:'), false, `${f} contains allowed-tools`);
+    // Claude include syntax is not supported in Codex; we install files to a stable location instead.
+    assert.equal(content.includes('\n@'), false, `${f} contains @ include syntax`);
+    assert.equal(content.includes('`@'), false, `${f} contains @ include syntax`);
+  }
+});

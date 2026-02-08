@@ -2,15 +2,6 @@
 name: gsd:research-phase
 description: Research how to implement a phase before planning
 argument-hint: "[phase]"
-allowed-tools:
-  - Read
-  - Bash
-  - Glob
-  - Grep
-  - Write
-  - WebFetch
-  - WebSearch
-  - mcp__context7__*
 ---
 
 <objective>
@@ -27,19 +18,19 @@ Output: RESEARCH.md with ecosystem knowledge that informs quality planning.
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/research-phase.md
-@~/.codex/get-shit-done/templates/research.md
-@~/.codex/get-shit-done/references/research-pitfalls.md
+~/.codex/get-shit-done/workflows/research-phase.md
+~/.codex/get-shit-done/templates/research.md
+~/.codex/get-shit-done/references/research-pitfalls.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (required)
 
 **Load project state:**
-@.planning/STATE.md
+.planning/STATE.md
 
 **Load roadmap:**
-@.planning/ROADMAP.md
+.planning/ROADMAP.md
 
 **Load phase context if exists:**
 Check for `.planning/phases/XX-name/{phase}-CONTEXT.md` - bonus context from discuss-phase.

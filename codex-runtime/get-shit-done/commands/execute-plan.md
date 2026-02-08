@@ -2,16 +2,6 @@
 name: gsd:execute-plan
 description: Execute a PLAN.md file
 argument-hint: "[path-to-PLAN.md]"
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Glob
-  - Grep
-  - Task
-  - AskUserQuestion
-  - SlashCommand
 ---
 
 <objective>
@@ -28,24 +18,24 @@ Uses intelligent segmentation:
   </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/execute-phase.md
-@~/.codex/get-shit-done/templates/summary.md
-@~/.codex/get-shit-done/references/checkpoints.md
-@~/.codex/get-shit-done/references/tdd.md
+~/.codex/get-shit-done/workflows/execute-phase.md
+~/.codex/get-shit-done/templates/summary.md
+~/.codex/get-shit-done/references/checkpoints.md
+~/.codex/get-shit-done/references/tdd.md
 </execution_context>
 
 <context>
 Plan path: $ARGUMENTS
 
 **Load project state first:**
-@.planning/STATE.md
+.planning/STATE.md
 
 **Load workflow config:**
-@.planning/config.json
+.planning/config.json
 </context>
 
 <process>
-1. Check .planning/ directory exists (error if not - user should run /gsd:new-project)
+1. Check .planning/ directory exists (error if not - user should run gsd-new-project)
 2. Verify plan at $ARGUMENTS exists
 3. Check if SUMMARY.md already exists (plan already executed?)
 4. Load workflow config for mode (interactive/yolo)

@@ -2,11 +2,6 @@
 name: gsd:list-phase-assumptions
 description: Surface Claude's assumptions about a phase approach before planning
 argument-hint: "[phase]"
-allowed-tools:
-  - Read
-  - Bash
-  - Grep
-  - Glob
 ---
 
 <objective>
@@ -17,17 +12,17 @@ Output: Conversational output only (no file creation) - ends with "What do you t
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/list-phase-assumptions.md
+~/.codex/get-shit-done/workflows/list-phase-assumptions.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (required)
 
 **Load project state first:**
-@.planning/STATE.md
+.planning/STATE.md
 
 **Load roadmap:**
-@.planning/ROADMAP.md
+.planning/ROADMAP.md
 </context>
 
 <process>

@@ -13,35 +13,35 @@ Output: {phase}-CONTEXT.md capturing the user's vision for the phase
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/discuss-phase.md
-@~/.codex/get-shit-done/templates/context.md
+~/.codex/get-shit-done/workflows/discuss-phase.md
+~/.codex/get-shit-done/templates/context.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (required)
 
 **Load project state first:**
-@.planning/STATE.md
+.planning/STATE.md
 
 **Load roadmap:**
-@.planning/ROADMAP.md
+.planning/ROADMAP.md
 </context>
 
 <process>
 1. Validate phase number argument (error if missing or invalid)
 2. Check if phase exists in roadmap
 3. Check if CONTEXT.md already exists (offer to update if yes)
-4. Follow discuss-phase.md workflow with **ALL questions using AskUserQuestion**:
+4. Follow discuss-phase.md workflow with **ALL questions using ask the user**:
    - Present phase from roadmap
-   - Use AskUserQuestion: "How do you imagine this working?" with interpretation options
-   - Use AskUserQuestion to follow their thread — probe what excites them
-   - Use AskUserQuestion to sharpen the core — what's essential for THIS phase
-   - Use AskUserQuestion to find boundaries — what's explicitly out of scope
-   - Use AskUserQuestion for decision gate (ready / ask more / let me add context)
+   - Use ask the user: "How do you imagine this working?" with interpretation options
+   - Use ask the user to follow their thread — probe what excites them
+   - Use ask the user to sharpen the core — what's essential for THIS phase
+   - Use ask the user to find boundaries — what's explicitly out of scope
+   - Use ask the user for decision gate (ready / ask more / let me add context)
    - Create CONTEXT.md capturing their vision
 5. Offer next steps (research or plan the phase)
 
-**CRITICAL: ALL questions use AskUserQuestion. Never ask inline text questions.**
+**CRITICAL: ALL questions use ask the user. Never ask inline text questions.**
 
 User is the visionary, you are the builder:
 - Ask about vision, feel, essential outcomes

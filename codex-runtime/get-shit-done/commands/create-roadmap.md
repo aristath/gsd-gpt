@@ -1,29 +1,23 @@
 ---
 name: gsd:create-roadmap
 description: Create roadmap with phases for the project
-allowed-tools:
-  - Read
-  - Write
-  - Bash
-  - AskUserQuestion
-  - Glob
 ---
 
 <objective>
 Create project roadmap with phase breakdown.
 
-Roadmaps define what work happens in what order. Run after /gsd:new-project.
+Roadmaps define what work happens in what order. Run after gsd-new-project.
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/create-roadmap.md
-@~/.codex/get-shit-done/templates/roadmap.md
-@~/.codex/get-shit-done/templates/state.md
+~/.codex/get-shit-done/workflows/create-roadmap.md
+~/.codex/get-shit-done/templates/roadmap.md
+~/.codex/get-shit-done/templates/state.md
 </execution_context>
 
 <context>
-@.planning/PROJECT.md
-@.planning/config.json
+.planning/PROJECT.md
+.planning/config.json
 </context>
 
 <process>
@@ -31,7 +25,7 @@ Roadmaps define what work happens in what order. Run after /gsd:new-project.
 <step name="validate">
 ```bash
 # Verify project exists
-[ -f .planning/PROJECT.md ] || { echo "ERROR: No PROJECT.md found. Run /gsd:new-project first."; exit 1; }
+[ -f .planning/PROJECT.md ] || { echo "ERROR: No PROJECT.md found. Run gsd-new-project first."; exit 1; }
 ```
 </step>
 
@@ -43,7 +37,7 @@ Check if roadmap already exists:
 ```
 
 **If ROADMAP_EXISTS:**
-Use AskUserQuestion:
+Use ask the user:
 - header: "Roadmap exists"
 - question: "A roadmap already exists. What would you like to do?"
 - options:
@@ -83,15 +77,15 @@ Roadmap created:
 
 **Phase 1: [Name]** — [Goal from ROADMAP.md]
 
-`/gsd:plan-phase 1`
+`gsd-plan-phase 1`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd:discuss-phase 1` — gather context first
-- `/gsd:research-phase 1` — investigate unknowns
+- `gsd-discuss-phase 1` — gather context first
+- `gsd-research-phase 1` — investigate unknowns
 - Review roadmap
 
 ---

@@ -2,14 +2,6 @@
 name: gsd:verify-work
 description: Guide manual user acceptance testing of recently built features
 argument-hint: "[optional: phase or plan number, e.g., '4' or '04-02']"
-allowed-tools:
-  - Read
-  - Bash
-  - Glob
-  - Grep
-  - Edit
-  - Write
-  - AskUserQuestion
 ---
 
 <objective>
@@ -21,8 +13,8 @@ Output: Validation of features, any issues logged to phase-scoped ISSUES.md
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/verify-work.md
-@~/.codex/get-shit-done/templates/uat-issues.md
+~/.codex/get-shit-done/workflows/verify-work.md
+~/.codex/get-shit-done/templates/uat-issues.md
 </execution_context>
 
 <context>
@@ -31,10 +23,10 @@ Scope: $ARGUMENTS (optional)
 - If not provided: Test most recently completed plan
 
 **Load project state:**
-@.planning/STATE.md
+.planning/STATE.md
 
 **Load roadmap:**
-@.planning/ROADMAP.md
+.planning/ROADMAP.md
 </context>
 
 <process>
@@ -43,13 +35,13 @@ Scope: $ARGUMENTS (optional)
 3. Follow verify-work.md workflow:
    - Extract testable deliverables
    - Generate test checklist
-   - Guide through each test via AskUserQuestion
+   - Guide through each test via ask the user
    - Collect and categorize issues
    - Log issues to `.planning/phases/XX-name/{phase}-{plan}-ISSUES.md`
    - Present summary with verdict
 4. Offer next steps based on results:
    - If all passed: Continue to next phase
-   - If issues found: `/gsd:plan-fix {phase} {plan}` to create fix plan
+   - If issues found: `gsd-plan-fix {phase} {plan}` to create fix plan
 </process>
 
 <anti_patterns>

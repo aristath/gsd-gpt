@@ -2,13 +2,6 @@
 name: gsd:plan-fix
 description: Plan fixes for UAT issues from verify-work
 argument-hint: "[plan, e.g., '04-02']"
-allowed-tools:
-  - Read
-  - Bash
-  - Write
-  - Glob
-  - Grep
-  - AskUserQuestion
 ---
 
 <objective>
@@ -19,16 +12,16 @@ Output: {plan}-FIX.md in the phase directory, ready for execution.
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/references/plan-format.md
-@~/.codex/get-shit-done/references/checkpoints.md
+~/.codex/get-shit-done/references/plan-format.md
+~/.codex/get-shit-done/references/checkpoints.md
 </execution_context>
 
 <context>
 Plan number: $ARGUMENTS (required - e.g., "04-02" or "09-01")
 
 **Load project state:**
-@.planning/STATE.md
-@.planning/ROADMAP.md
+.planning/STATE.md
+.planning/ROADMAP.md
 </context>
 
 <process>
@@ -43,7 +36,7 @@ If no argument provided:
 ```
 Error: Plan number required.
 
-Usage: /gsd:plan-fix 04-02
+Usage: gsd-plan-fix 04-02
 
 This creates a fix plan from .planning/phases/XX-name/04-02-ISSUES.md
 ```
@@ -62,7 +55,7 @@ If not found:
 ```
 No ISSUES.md found for plan {plan}.
 
-ISSUES.md files are created by /gsd:verify-work when UAT finds issues.
+ISSUES.md files are created by gsd-verify-work when UAT finds issues.
 If no issues were found during testing, no fix plan is needed.
 ```
 Exit.
@@ -126,19 +119,19 @@ Priority: {critical count} critical, {major count} major, {minor count} minor
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/execute-phase.md
-@~/.codex/get-shit-done/templates/summary.md
+~/.codex/get-shit-done/workflows/execute-phase.md
+~/.codex/get-shit-done/templates/summary.md
 </execution_context>
 
 <context>
-@.planning/STATE.md
-@.planning/ROADMAP.md
+.planning/STATE.md
+.planning/ROADMAP.md
 
 **Issues being fixed:**
-@.planning/phases/XX-name/{plan}-ISSUES.md
+.planning/phases/XX-name/{plan}-ISSUES.md
 
 **Original plan for reference:**
-@.planning/phases/XX-name/{plan}-PLAN.md
+.planning/phases/XX-name/{plan}-PLAN.md
 </context>
 
 <tasks>
@@ -191,8 +184,8 @@ Would you like to:
 ---
 ```
 
-Use AskUserQuestion to get response.
-If execute: `/gsd:execute-plan .planning/phases/XX-name/{plan}-FIX.md`
+Use ask the user to get response.
+If execute: `gsd-execute-plan .planning/phases/XX-name/{plan}-FIX.md`
 </step>
 
 </process>

@@ -1,10 +1,6 @@
 ---
 name: gsd:pause-work
 description: Create context handoff when pausing work mid-phase
-allowed-tools:
-  - Read
-  - Write
-  - Bash
 ---
 
 <objective>
@@ -14,7 +10,7 @@ Enables seamless resumption in fresh session with full context restoration.
 </objective>
 
 <context>
-@.planning/STATE.md
+.planning/STATE.md
 </context>
 
 <process>
@@ -107,7 +103,7 @@ Current state:
 - Status: [in_progress/blocked]
 - Committed as WIP
 
-To resume: /gsd:resume-work
+To resume: gsd-resume-work
 
 ```
 </step>

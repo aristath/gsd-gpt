@@ -2,15 +2,6 @@
 name: gsd:plan-phase
 description: Create detailed execution plan for a phase (PLAN.md)
 argument-hint: "[phase]"
-allowed-tools:
-  - Read
-  - Bash
-  - Write
-  - Glob
-  - Grep
-  - AskUserQuestion
-  - WebFetch
-  - mcp__context7__*
 ---
 
 <objective>
@@ -21,24 +12,24 @@ Output: One or more PLAN.md files in the phase directory (.planning/phases/XX-na
 </objective>
 
 <execution_context>
-@~/.codex/get-shit-done/workflows/plan-phase.md
-@~/.codex/get-shit-done/templates/phase-prompt.md
-@~/.codex/get-shit-done/references/plan-format.md
-@~/.codex/get-shit-done/references/scope-estimation.md
-@~/.codex/get-shit-done/references/checkpoints.md
-@~/.codex/get-shit-done/references/tdd.md
+~/.codex/get-shit-done/workflows/plan-phase.md
+~/.codex/get-shit-done/templates/phase-prompt.md
+~/.codex/get-shit-done/references/plan-format.md
+~/.codex/get-shit-done/references/scope-estimation.md
+~/.codex/get-shit-done/references/checkpoints.md
+~/.codex/get-shit-done/references/tdd.md
 </execution_context>
 
 <context>
 Phase number: $ARGUMENTS (optional - auto-detects next unplanned phase if not provided)
 
 **Load project state first:**
-@.planning/STATE.md
+.planning/STATE.md
 
 **Load roadmap:**
-@.planning/ROADMAP.md
+.planning/ROADMAP.md
 
-**Load phase context if exists (created by /gsd:discuss-phase):**
+**Load phase context if exists (created by gsd-discuss-phase):**
 Check for and read `.planning/phases/XX-name/{phase}-CONTEXT.md` - contains research findings, clarifications, and decisions from phase discussion.
 
 **Load codebase context if exists:**
@@ -46,7 +37,7 @@ Check for `.planning/codebase/` and load relevant documents based on phase type.
 </context>
 
 <process>
-1. Check .planning/ directory exists (error if not - user should run /gsd:new-project)
+1. Check .planning/ directory exists (error if not - user should run gsd-new-project)
 2. If phase number provided via $ARGUMENTS, validate it exists in roadmap
 3. If no phase number, detect next unplanned phase from roadmap
 4. Follow plan-phase.md workflow:
